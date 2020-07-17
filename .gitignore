@@ -2,4 +2,4 @@
 __pycache__/
 .idea/
 constants.py
-
+geckodriver.log
