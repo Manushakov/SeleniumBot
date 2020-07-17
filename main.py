@@ -17,4 +17,5 @@ def send_marks(message):
     bot.send_message(message.chat.id, get_marks(message.text))
 
 
-bot.polling(none_stop=True)
+if __name__ == "__main__":
+    bot.polling(none_stop=True)
