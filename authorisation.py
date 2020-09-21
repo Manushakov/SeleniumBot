@@ -32,7 +32,7 @@ def get_marks(information):
                 pass
             marks_list = driver.find_elements_by_css_selector("tr.disciplineRow > td:nth-child(5) > span:nth-child(1)")
             for i in range(len(subject_list)):
-                result += subject_list[i].text + " - " + marks_list[i].text + ", "
+                result += subject_list[i].text + " - " + marks_list[i].text + "\n"
             return result
         finally:
             driver.quit()
