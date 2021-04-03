@@ -1,10 +1,9 @@
 from selenium import webdriver
-import time
+
 
 path = 'geckodriver.exe'
 opt = webdriver.FirefoxOptions()
-opt.headless = True
-driver = webdriver.Firefox(executable_path=path, options=opt)
+opt.headless = False
 
 
 def get_marks(information):
@@ -12,19 +11,21 @@ def get_marks(information):
     if len(a) != 2:
         return "Неправильно введенные данные, для помощи напишите /help"
     else:
+        driver = webdriver.Firefox(executable_path=path, options=opt)
+        driver.implicitly_wait(5)
         try:
             result = ""
             driver.get("https://grade.sfedu.ru/")
-            login = driver.find_element_by_id("loginopenid")
+            login = driver.find_element_by_id("loginoauth")
             login.send_keys(a[0])
-            submit_button = driver.find_element_by_id("signopenidin_b")
+            submit_button = driver.find_element_by_id("signoauthin_b")
             submit_button.click()
-            time.sleep(2)
-            password = driver.find_element_by_xpath("/html/body/div[2]/div[1]/form/table/tbody/tr[1]/td/input")
+            password = driver.find_element_by_id("passwordInput")
             password.send_keys(a[1])
-            password_button = driver.find_element_by_xpath("/html/body/div[2]/div[1]/form/table/tbody/tr[2]/td/input[1]")
+            password_button = driver.find_element_by_id("submitButton")
             password_button.click()
-            time.sleep(2)
+            confirm_button = driver.find_element_by_id("idBtn_Back")
+            confirm_button.click()
             subject_list = driver.find_elements_by_css_selector("tr.disciplineRow > td:nth-child(2) > a:nth-child(1)")
             if not subject_list:
                 return "Неправильно введенные данные, для помощи напишите /help"
