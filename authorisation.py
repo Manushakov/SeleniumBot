@@ -1,9 +1,12 @@
 from selenium import webdriver
 
 
-path = 'geckodriver.exe'
-opt = webdriver.FirefoxOptions()
-opt.headless = False
+GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
+CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--disable-gpu')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.binary_location = GOOGLE_CHROME_PATH
 
 
 def get_marks(information):
@@ -11,7 +14,7 @@ def get_marks(information):
     if len(a) != 2:
         return "Неправильно введенные данные, для помощи напишите /help"
     else:
-        driver = webdriver.Firefox(executable_path=path, options=opt)
+        driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
         driver.implicitly_wait(5)
         try:
             result = ""
