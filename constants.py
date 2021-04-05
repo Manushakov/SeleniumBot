@@ -1,1 +1,1 @@
-TOKEN_NAME = 'your token here/ваш токен здесь'
+TOKEN_NAME = '969370740:AAFHwxCTh_Xl4tSY_IUps84NZ2NFUoVJncU'
