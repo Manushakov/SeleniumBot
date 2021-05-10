@@ -23,7 +23,7 @@ def get_marks(information):
             login.send_keys(a[0])
             submit_button = driver.find_element_by_id("signoauthin_b")
             submit_button.click()
-            password = driver.find_element_by_id("passwd")
+            password = driver.find_element_by_name("passwd")
             password.send_keys(a[1])
             password_button = driver.find_element_by_id("idSIButton9")
             password_button.click()
